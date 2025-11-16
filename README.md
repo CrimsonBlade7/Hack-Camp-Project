@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# **OctoPod – Smarter Studying Through Personalized Practice**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Overview**
 
-## Available Scripts
+Studying can be frustrating—especially when you’re not sure whether you actually understand the material. You can read notes, review examples, or browse various AI tools, yet still end up unsure of what you really know.
+**OctoPod** solves this problem by generating personalized practice questions based on the notes you upload. With endless custom questions and performance-based feedback, OctoPod helps you identify what you’ve mastered and what you need to study next.
 
-In the project directory, you can run:
+OctoPod offers a simple, intuitive web interface with pages for **Home**, **Features**, **About**, **Contact**, and **Login**, making it easy to navigate and track your learning.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **The Problem**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Most study tools tell you *what* to review, but not whether you truly understand the concepts. Even with today’s wealth of AI-powered resources, students often struggle to measure comprehension or identify weak spots.
+There’s no clear way to test your understanding using your own study materials—and that’s where traditional tools fall short.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **The Solution**
 
-### `npm run build`
+**OctoPod** takes your notes and transforms them into practice.
+By uploading a simple `.txt` file, you can generate unlimited multiple-choice questions tailored to your material. After practicing, OctoPod gives you a **personalized study summary** that highlights the topics you struggled with. If you log in, OctoPod saves your progress and continuously updates your feedback as you improve—like an adaptive, always-available study partner.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## **Key Features**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **📘 Personalized Question Generation**
 
-### `npm run eject`
+Upload a `.txt` file and instantly generate as many multiple-choice questions as you need—based entirely on your notes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **💡 Performance-Based Study Summaries**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Get a detailed breakdown of which topics you missed, where you need improvement, and how your understanding changes over time.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### **📂 Two Study Modes**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* **Evaluation Mode** – Learn at your own pace. Generate questions, answer freely, and receive adaptive feedback.
+* **Time Attack Mode** – Set a timer and answer as many questions as possible before time runs out. Perfect for warm-ups and exam simulation.
 
-## Learn More
+### **🔒 Account Integration**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Log in with Google or email to save attempts, track progress, and watch your personalized feedback evolve.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **🌐 Clean, User-Friendly Navigation**
 
-### Code Splitting
+A simple top navigation bar gives quick access to:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* **Home**
+* **Features**
+* **About**
+* **Contact**
+* **Login**
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## **Benefits**
 
-### Making a Progressive Web App
+* **Study smarter, not harder** with personalized practice based on your actual notes.
+* **Identify weak areas instantly** instead of guessing what you need to review.
+* **Track your improvement** across sessions with saved attempts.
+* **Practice in different styles**—slow and steady, or fast and competitive.
+* **Boost confidence** heading into exams by knowing exactly what you’ve mastered.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## **How to Use OctoPod**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. **Go to the Homepage**
+   Explore the menu to learn about features, our mission, and how to contact us.
 
-### Deployment
+2. **Click “Get Started”**
+   Begin your study session directly from the home page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. **Upload Your Notes**
+   Choose a `.txt` file containing the material you want to study.
 
-### `npm run build` fails to minify
+4. **Select a Study Mode**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   * **Evaluation Mode**: Generate unlimited questions and review your personalized summary.
+   * **Time Attack**: Choose a time limit and test your speed and accuracy.
+
+5. **Review Your Feedback**
+   Scroll down to generate your study summary. If you’re logged in, the system updates over time to reflect your growing mastery.
+
+6. **Return Anytime**
+   Login ensures your previous attempts are saved and always accessible.
+
+---
+
+With countless study tools available, it can be hard to find one that actually shows you what you *don’t* know.
+**OctoPod** gives you clarity, direction, and confidence—so you can study effectively and succeed throughout your academic journey.
+
+Happy studying! 🎓✨
+
+---
