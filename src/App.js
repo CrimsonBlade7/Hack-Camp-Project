@@ -11,23 +11,26 @@ import Login from './pages/Login.js';
 import TermsOfUse from './pages/TermsOfUse.js';
 import LearningPage from './pages/LearningPage.js';
 import Learn from './pages/Learn.js';
+import { FileProvider } from './context/FileContext.js';
 
 function App() {
   return (
-    <Router>
-      <MenuBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/getstarted" element={<GetStarted />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/features" element={<Features />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/terms" element={<TermsOfUse />} />
-        <Route path="/learningpage" element={<LearningPage />} />
-        <Route path="/learn" element={<Learn />} />
-      </Routes>
-    </Router>
+    <FileProvider>
+      <Router>
+        <MenuBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/getstarted" element={<GetStarted />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/learningpage" element={<LearningPage />} />
+          <Route path="/learn" element={<Learn />} />
+        </Routes>
+      </Router>
+    </FileProvider>
   );
 }
 
