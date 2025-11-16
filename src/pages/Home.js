@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../styles/pages.css";
 import GetStarted from "./GetStarted";
@@ -22,13 +22,6 @@ const Home = () => {
     "🌈 Octopuses are color blind but can still match their surroundings!",
   ];
 
-  const [currentFact, setCurrentFact] = useState("");
-
-  useEffect(() => {
-    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-    setCurrentFact(randomFact);
-  }, []);
-
   useEffect(() => {
     const els = document.querySelectorAll(".fact-bubble");
     if (!els || els.length === 0) return;
@@ -47,6 +40,41 @@ const Home = () => {
     els.forEach((el) => io.observe(el));
 
     return () => io.disconnect();
+  }, []);
+
+  const overlayRef = useRef(null);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+
+    let rafId = null;
+    const maxOpacity = 0.7; // maximum darkness at bottom
+
+    const update = () => {
+      const doc = document.documentElement;
+      const scrollTop = window.scrollY || doc.scrollTop;
+      const scrollHeight = doc.scrollHeight;
+      const clientHeight = window.innerHeight || doc.clientHeight;
+      const maxScroll = Math.max(scrollHeight - clientHeight, 1);
+      const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+      overlay.style.opacity = String(progress * maxOpacity);
+    };
+
+    const onScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(update);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -92,7 +120,7 @@ const Home = () => {
           
           .home-content-wrapper {
             position: relative;
-            z-index: 1;
+            z-index: 2;
           }
 
           .feature-card {
@@ -214,6 +242,21 @@ const Home = () => {
         }}
       ></div>
 
+      {/* Overlay that darkens the background as you scroll */}
+      <div
+        ref={overlayRef}
+        className="scroll-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,1)",
+          opacity: 0,
+          zIndex: 1,
+          pointerEvents: "none",
+          transition: "opacity 150ms linear",
+        }}
+      />
+
       <div className="page-content home-content-wrapper">
         <div
           style={{
@@ -310,11 +353,11 @@ const Home = () => {
           <button className="cta-button">Get Started</button>
         </Link>
       </div>
-      <div style={{ marginTop: "3rem" }}>
+      <div style={{ marginTop: "6rem", position: "relative", zIndex: 3 }}>
         <h3
           style={{
             color: "#fff",
-            marginBottom: "0.75rem",
+            marginBottom: "2rem",
             fontSize: "1.2rem",
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
             textAlign: "center",
@@ -324,7 +367,7 @@ const Home = () => {
         </h3>
 
         <style>
-          {`\n            .fact-bubbles-container {\n              display: flex;\n              flex-direction: column;\n              gap: 1rem;\n              align-items: center;\n              padding: 1rem 0 3rem;\n              max-width: 900px;\n              margin: 0 auto;\n            }\n\n            .fact-bubble {\n              width: min(92vw, 760px);\n              max-width: 760px;\n              background: rgba(255,255,255,0.09);\n              color: #fff;\n              padding: 1rem 1.25rem;\n              border-radius: 999px;\n              box-shadow: 0 6px 18px rgba(2,6,23,0.35);\n              transform: translateY(28px) scale(0.98);\n              opacity: 0;\n              transition: transform 600ms cubic-bezier(.22,.9,.3,1), opacity 600ms ease, box-shadow 300ms ease;\n              backdrop-filter: blur(6px);\n              border: 1px solid rgba(255,255,255,0.08);\n              display: flex;\n              align-items: center;\n              justify-content: center;\n              text-align: center;\n            }\n\n            .fact-bubble p { margin: 0; font-size: 1rem; line-height: 1.35; }\n\n            .fact-bubble.visible {\n              transform: translateY(0) scale(1);\n              opacity: 1;\n            }\n\n            @media (min-width: 860px) {\n              .fact-bubbles-container {\n                gap: 1.25rem;\n              }\n              .fact-bubble p { font-size: 1.05rem; }\n            }\n          `}
+          {`\n            .fact-bubbles-container {\n              display: flex;\n              flex-direction: column;\n              gap: 2rem;\n              padding: 1rem 0 3rem;\n              max-width: 1000px;\n              margin: 0 auto;\n              position: relative;\n            }\n\n            .fact-bubble {\n              width: min(92vw, 400px);\n              max-width: 400px;\n              background: rgba(255,255,255,0.09);\n              color: #fff;\n              padding: 1.5rem;\n              border-radius: 12px;\n              box-shadow: 0 6px 18px rgba(2,6,23,0.35);\n              transform: translateY(28px) scale(0.98);\n              opacity: 0;\n              transition: transform 600ms cubic-bezier(.22,.9,.3,1), opacity 600ms ease, box-shadow 300ms ease;\n              backdrop-filter: blur(6px);\n              border: 1px solid rgba(255,255,255,0.08);\n              display: flex;\n              align-items: center;\n              justify-content: center;\n              text-align: center;\n            }\n\n            .fact-bubble:nth-child(odd) {\n              margin-left: 0;\n            }\n\n            .fact-bubble:nth-child(even) {\n              margin-left: auto;\n            }\n\n            .fact-bubble p { margin: 0; font-size: 1rem; line-height: 1.35; }\n\n            .fact-bubble.visible {\n              transform: translateY(0) scale(1);\n              opacity: 1;\n            }\n\n            @media (min-width: 860px) {\n              .fact-bubbles-container {\n                gap: 2.5rem;\n              }\n              .fact-bubble {\n                width: 380px;\n              }\n              .fact-bubble p { font-size: 1.05rem; }\n            }\n\n            @media (max-width: 600px) {\n              .fact-bubble,\n              .fact-bubble:nth-child(even) {\n                margin-left: auto;\n                margin-right: auto;\n              }\n            }\n          `}
         </style>
 
         <div className="fact-bubbles-container">
