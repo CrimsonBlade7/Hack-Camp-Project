@@ -62,8 +62,13 @@ const MenuBar = () => {
             </ul>
           </div>
           <div className="logo">
-            <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '2rem', verticalAlign: 'middle', marginRight: '0.5rem' }} />
-            <h1 style={{ display: 'inline', verticalAlign: 'middle' }}>OctoPod</h1>
+            <h1 style={{ 
+            fontFamily: '"Fredoka One", "Baloo 2", "Rounded Mplus 1c", "Comic Sans MS", cursive',
+            fontWeight: '700',
+            letterSpacing: '1px',
+            margin: 0
+          }}>OctoPod</h1>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '2rem', verticalAlign: 'middle', marginRight: '0.5rem' }} />
           </div>
           <div className="menu-right">
             <Link to="/login" className="login-btn">Login</Link>

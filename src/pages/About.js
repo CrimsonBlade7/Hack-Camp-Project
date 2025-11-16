@@ -81,10 +81,16 @@ const About = () => {
       <div className="bubble" style={{ left: '90%', width: '28px', height: '28px', animationDelay: '1s', animationDuration: '15s' }}></div>
       
       <div className="page-content about-content-wrapper">
-        <h1 style={{ 
-          color: '#0c4a6e', 
-          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)'
-        }}>About OctoPod</h1>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+          <h1 style={{ 
+            fontFamily: '"Fredoka One", "Baloo 2", "Rounded Mplus 1c", "Comic Sans MS", cursive',
+            fontWeight: '700',
+            letterSpacing: '1px',
+            margin: 0
+          }}>About OctoPod</h1>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+        </div>
 
         <div className="about-section" style={{
           background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(147, 197, 253, 0.95) 100%)',

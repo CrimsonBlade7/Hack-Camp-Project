@@ -90,8 +90,17 @@ const Features = () => {
       <div className="bubble" style={{ left: '90%', width: '28px', height: '28px', animationDelay: '1s', animationDuration: '15s' }}></div>
       
       <div className="page-content features-content-wrapper">
-        <h1 style={{ color: '#0c4a6e', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>Features</h1>
-        <p className="subtitle" style={{ color: '#0c4a6e', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>Discover what makes OctoPod special!</p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+          <h1 style={{ 
+            fontFamily: '"Fredoka One", "Baloo 2", "Rounded Mplus 1c", "Comic Sans MS", cursive',
+            fontWeight: '700',
+            letterSpacing: '1px',
+            margin: 0
+          }}>Features</h1>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+        </div>
+        <h3 style={{ color: '#666', fontWeight: '400', marginTop: '0.5rem', textAlign: 'center' }}>Discover what makes OctoPod special!</h3>
 
         <div className="features-grid">
           <div className="feature-item" style={{ 

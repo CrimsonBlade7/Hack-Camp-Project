@@ -164,10 +164,70 @@ Keep it brief and actionable.`;
   };
 
   return (
-    <div className="page-container">
-      <div className="page-content">
-        <h1>Evaluation Mode</h1>
-        <p>Welcome to Evaluation Mode! Here you can study at your own pace and review material freely.</p>
+    <div className="page-container" style={{
+      background: 'linear-gradient(-45deg, #1e3a8a, #3b82f6, #06b6d4, #0891b2)',
+      backgroundSize: '400% 400%',
+      animation: 'oceanWave 15s ease infinite',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      <style>
+        {`
+          @keyframes oceanWave {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+          
+          .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+          }
+          
+          @keyframes rise {
+            to {
+              bottom: 110%;
+              opacity: 0;
+            }
+          }
+          
+          .learn-content-wrapper {
+            position: relative;
+            z-index: 1;
+          }
+        `}
+      </style>
+      
+      {/* Floating bubbles */}
+      <div className="bubble" style={{ left: '10%', width: '40px', height: '40px', animationDelay: '0s', animationDuration: '12s' }}></div>
+      <div className="bubble" style={{ left: '20%', width: '20px', height: '20px', animationDelay: '2s', animationDuration: '10s' }}></div>
+      <div className="bubble" style={{ left: '35%', width: '30px', height: '30px', animationDelay: '4s', animationDuration: '14s' }}></div>
+      <div className="bubble" style={{ left: '50%', width: '25px', height: '25px', animationDelay: '0s', animationDuration: '11s' }}></div>
+      <div className="bubble" style={{ left: '65%', width: '35px', height: '35px', animationDelay: '3s', animationDuration: '13s' }}></div>
+      <div className="bubble" style={{ left: '80%', width: '20px', height: '20px', animationDelay: '5s', animationDuration: '9s' }}></div>
+      <div className="bubble" style={{ left: '90%', width: '28px', height: '28px', animationDelay: '1s', animationDuration: '15s' }}></div>
+      
+      <div className="page-content learn-content-wrapper">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+          <h1 style={{ 
+            fontFamily: '"Fredoka One", "Baloo 2", "Rounded Mplus 1c", "Comic Sans MS", cursive',
+            fontWeight: '700',
+            letterSpacing: '1px',
+            margin: 0
+          }}>Evaluation Mode</h1>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+        </div>
+        <p style={{ color: '#000', fontWeight: '400', marginTop: '0.5rem', textAlign: 'center' }}>Welcome to Evaluation Mode! Here you can study at your own pace and review material freely.</p>
         
         {uploadedFile && (
           <div style={{ marginTop: '1rem', padding: '0.5rem', background: '#f0f4ff', borderRadius: '8px' }}>
@@ -210,7 +270,43 @@ Keep it brief and actionable.`;
             {loading ? "Generating Question..." : questionData ? "Generate New Question" : "Generate Question"}
           </button>
 
-          {questionData && (
+          {/* Loading View for Question Generation */}
+          {loading && (
+            <div style={{ 
+              marginTop: '2rem',
+              padding: '2rem',
+              background: '#fff',
+              borderRadius: '8px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              textAlign: 'center'
+            }}>
+              <style>
+                {`
+                  @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                  }
+                `}
+              </style>
+              <div style={{ 
+                width: '50px', 
+                height: '50px', 
+                border: '5px solid #e0e7ff',
+                borderTop: '5px solid #4449b7',
+                borderRadius: '50%',
+                animation: 'spin 1s linear infinite',
+                margin: '0 auto 1rem auto'
+              }}></div>
+              <p style={{ color: '#4449b7', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                Generating your question...
+              </p>
+              <p style={{ color: '#666', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                Creating a question from your study material
+              </p>
+            </div>
+          )}
+
+          {questionData && !loading && (
             <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
               <h3 style={{ color: '#4449b7', marginBottom: '1rem' }}>{questionData.question}</h3>
               
@@ -294,8 +390,49 @@ Keep it brief and actionable.`;
               </button>
             </div>
 
+            {/* Loading View */}
+            {loadingSummary && (
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                gap: '1rem', 
+                marginBottom: '1.5rem',
+                padding: '2rem',
+                background: '#f0f4ff',
+                borderRadius: '8px',
+                border: '2px solid #4449b7'
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ 
+                    width: '50px', 
+                    height: '50px', 
+                    border: '5px solid #e0e7ff',
+                    borderTop: '5px solid #4449b7',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite',
+                    margin: '0 auto 1rem auto'
+                  }}></div>
+                  <style>
+                    {`
+                      @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                      }
+                    `}
+                  </style>
+                  <p style={{ color: '#4449b7', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                    Analyzing your answers...
+                  </p>
+                  <p style={{ color: '#666', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                    Generating personalized study recommendations
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* AI Summary Section */}
-            {summary && (
+            {summary && !loadingSummary && (
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <span style={{ fontSize: '7rem' }}>🐟</span>
                 <div style={{ 

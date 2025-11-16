@@ -23,7 +23,7 @@ const Timed = () => {
   // Timer countdown
   useEffect(() => {
     let interval = null;
-    if (isTimerActive && timeLeft > 0) {
+    if (isTimerActive && timeLeft > 0 && !loading) {
       interval = setInterval(() => {
         setTimeLeft((time) => time - 1);
       }, 1000);
@@ -32,7 +32,7 @@ const Timed = () => {
       handleSessionTimeUp();
     }
     return () => clearInterval(interval);
-  }, [isTimerActive, timeLeft]);
+  }, [isTimerActive, timeLeft, loading]);
 
   const handleSessionTimeUp = () => {
     setIsTimerActive(false);
@@ -168,9 +168,69 @@ Please create an educational question that tests a key concept from this materia
 
   if (gameOver) {
     return (
-      <div className="page-container">
-        <div className="page-content">
-          <h1>Timed Mode - Results</h1>
+      <div className="page-container" style={{
+        background: 'linear-gradient(-45deg, #1e3a8a, #3b82f6, #06b6d4, #0891b2)',
+        backgroundSize: '400% 400%',
+        animation: 'oceanWave 15s ease infinite',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <style>
+          {`
+            @keyframes oceanWave {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
+            }
+            
+            .bubble {
+              position: absolute;
+              bottom: -100px;
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 50%;
+              animation: rise 15s infinite ease-in;
+            }
+            
+            @keyframes rise {
+              to {
+                bottom: 110%;
+                opacity: 0;
+              }
+            }
+            
+            .timed-content-wrapper {
+              position: relative;
+              z-index: 1;
+            }
+          `}
+        </style>
+        
+        {/* Floating bubbles */}
+        <div className="bubble" style={{ left: '10%', width: '40px', height: '40px', animationDelay: '0s', animationDuration: '12s' }}></div>
+        <div className="bubble" style={{ left: '20%', width: '20px', height: '20px', animationDelay: '2s', animationDuration: '10s' }}></div>
+        <div className="bubble" style={{ left: '35%', width: '30px', height: '30px', animationDelay: '4s', animationDuration: '14s' }}></div>
+        <div className="bubble" style={{ left: '50%', width: '25px', height: '25px', animationDelay: '0s', animationDuration: '11s' }}></div>
+        <div className="bubble" style={{ left: '65%', width: '35px', height: '35px', animationDelay: '3s', animationDuration: '13s' }}></div>
+        <div className="bubble" style={{ left: '80%', width: '20px', height: '20px', animationDelay: '5s', animationDuration: '9s' }}></div>
+        <div className="bubble" style={{ left: '90%', width: '28px', height: '28px', animationDelay: '1s', animationDuration: '15s' }}></div>
+        
+        <div className="page-content timed-content-wrapper">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+            <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+            <h1 style={{ 
+              fontFamily: '"Fredoka One", "Baloo 2", "Rounded Mplus 1c", "Comic Sans MS", cursive',
+              fontWeight: '700',
+              letterSpacing: '1px',
+              margin: 0
+            }}>Timed Mode - Results</h1>
+            <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+          </div>
           <div style={{ marginTop: '2rem', padding: '2rem', background: '#fff', borderRadius: '12px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)', textAlign: 'center' }}>
             <h2 style={{ color: '#4449b7', marginBottom: '2rem' }}>Session Complete! 🎉</h2>
             
@@ -211,10 +271,70 @@ Please create an educational question that tests a key concept from this materia
   }
 
   return (
-    <div className="page-container">
-      <div className="page-content">
-        <h1>Timed Mode ⏱️</h1>
-        <p>Answer as many questions as you can within the time limit!</p>
+    <div className="page-container" style={{
+      background: 'linear-gradient(-45deg, #1e3a8a, #3b82f6, #06b6d4, #0891b2)',
+      backgroundSize: '400% 400%',
+      animation: 'oceanWave 15s ease infinite',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      <style>
+        {`
+          @keyframes oceanWave {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+          
+          .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+          }
+          
+          @keyframes rise {
+            to {
+              bottom: 110%;
+              opacity: 0;
+            }
+          }
+          
+          .timed-content-wrapper {
+            position: relative;
+            z-index: 1;
+          }
+        `}
+      </style>
+      
+      {/* Floating bubbles */}
+      <div className="bubble" style={{ left: '10%', width: '40px', height: '40px', animationDelay: '0s', animationDuration: '12s' }}></div>
+      <div className="bubble" style={{ left: '20%', width: '20px', height: '20px', animationDelay: '2s', animationDuration: '10s' }}></div>
+      <div className="bubble" style={{ left: '35%', width: '30px', height: '30px', animationDelay: '4s', animationDuration: '14s' }}></div>
+      <div className="bubble" style={{ left: '50%', width: '25px', height: '25px', animationDelay: '0s', animationDuration: '11s' }}></div>
+      <div className="bubble" style={{ left: '65%', width: '35px', height: '35px', animationDelay: '3s', animationDuration: '13s' }}></div>
+      <div className="bubble" style={{ left: '80%', width: '20px', height: '20px', animationDelay: '5s', animationDuration: '9s' }}></div>
+      <div className="bubble" style={{ left: '90%', width: '28px', height: '28px', animationDelay: '1s', animationDuration: '15s' }}></div>
+      
+      <div className="page-content timed-content-wrapper">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+          <h1 style={{ 
+            fontFamily: '"Fredoka One", "Baloo 2", "Rounded Mplus 1c", "Comic Sans MS", cursive',
+            fontWeight: '700',
+            letterSpacing: '1px',
+            margin: 0
+          }}>Timed Mode ⏱️</h1>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+        </div>
+        <p style={{ color: '#fff', fontWeight: '400', marginTop: '0.5rem', textAlign: 'center' }}>Answer as many questions as you can within the time limit!</p>
         
         {uploadedFile && (
           <div style={{ marginTop: '1rem', padding: '0.5rem', background: '#f0f4ff', borderRadius: '8px' }}>
@@ -318,8 +438,45 @@ Please create an educational question that tests a key concept from this materia
                 <p style={{ margin: 0, color: '#666' }}>Time Remaining</p>
               </div>
 
-              <div style={{ padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
-                <h3 style={{ color: '#4449b7', marginBottom: '1rem' }}>{questionData.question}</h3>
+              {/* Loading View for Question Generation */}
+              {loading && (
+                <div style={{ 
+                  marginBottom: '2rem',
+                  padding: '2rem',
+                  background: '#fff',
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                  textAlign: 'center'
+                }}>
+                  <style>
+                    {`
+                      @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                      }
+                    `}
+                  </style>
+                  <div style={{ 
+                    width: '50px', 
+                    height: '50px', 
+                    border: '5px solid #e0e7ff',
+                    borderTop: '5px solid #4449b7',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite',
+                    margin: '0 auto 1rem auto'
+                  }}></div>
+                  <p style={{ color: '#4449b7', fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                    Generating your question...
+                  </p>
+                  <p style={{ color: '#666', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                    Creating a question from your study material
+                  </p>
+                </div>
+              )}
+
+              {!loading && (
+                <div style={{ padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+                  <h3 style={{ color: '#4449b7', marginBottom: '1rem' }}>{questionData.question}</h3>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {Object.entries(questionData.options).map(([key, value]) => (
@@ -426,12 +583,13 @@ Please create an educational question that tests a key concept from this materia
                           cursor: 'pointer'
                         }}
                       >
-                        End Session
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
+                      End Session
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
             </>
           ) : null}
         </div>

@@ -77,7 +77,16 @@ const Contact = () => {
       <div className="bubble" style={{ left: '90%', width: '28px', height: '28px', animationDelay: '1s', animationDuration: '15s' }}></div>
       
       <div className="page-content contact-content-wrapper">
-        <h1 style={{ color: '#0c4a6e', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>Contact Us</h1>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+          <h1 style={{ 
+            fontFamily: '"Fredoka One", "Baloo 2", "Rounded Mplus 1c", "Comic Sans MS", cursive',
+            fontWeight: '700',
+            letterSpacing: '1px',
+            margin: 0
+          }}>Contact Us</h1>
+          <img src="/assets/Octopus.png" alt="Octopus" style={{ height: '4rem', width: 'auto' }} />
+        </div>
         <p className="subtitle">We'd love to hear from you!</p>
 
         <div className="contact-container">
