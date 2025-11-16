@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/pages.css";
 
 const GetStarted = () => {
   const [file, getFile] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (file) {
       // Handle file upload logic here
       console.log("File uploaded:", file.name);
+      // Redirect to LearningPage after upload
+      navigate("/learningpage");
     }
-
-    //MORE SHIT
-
   }
     return (
     <div className="page-container">

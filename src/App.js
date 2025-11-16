@@ -9,6 +9,8 @@ import Contact from './pages/Contact.js';
 import GetStarted from './pages/GetStarted.js';
 import Login from './pages/Login.js';
 import TermsOfUse from './pages/TermsOfUse.js';
+import LearningPage from './pages/LearningPage.js';
+import Learn from './pages/Learn.js';
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/features" element={<Features />} />
         <Route path="/contact" element={<Contact />} />
-  <Route path="/login" element={<Login />} />
-  <Route path="/terms" element={<TermsOfUse />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/terms" element={<TermsOfUse />} />
+        <Route path="/learningpage" element={<LearningPage />} />
+        <Route path="/learn" element={<Learn />} />
       </Routes>
     </Router>
   );
