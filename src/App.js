@@ -1,0 +1,25 @@
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MenuBar from './components/menubar.js';
+import Gemini from './components/Gemini.js';
+import Home from './pages/Home.js';
+import About from './pages/About.js';
+import Features from './pages/Features.js';
+import Contact from './pages/Contact.js';
+
+function App() {
+  return (
+    <Router>
+      <MenuBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/chat" element={<Gemini />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
