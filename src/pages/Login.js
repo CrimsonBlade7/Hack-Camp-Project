@@ -15,8 +15,8 @@ const Login = () => {
         </div>
         <div style={{ margin: "2rem 0" }}>
           <a href="#" className="login-email-btn">
-            <img src="https://e7.pngegg.com/pngimages/595/778/png-clipart-blue-triangle-area-symbol-aqua-mail-round-blue-and-white-mail-icon-blue-angle.png" alt="Google" style={{ width: 24, marginRight: 8, verticalAlign: "middle" }} />
-            Continue with Email
+            <img href="cropped_circle_image.png" alt="Google" style={{ width: 24, marginRight: 8, verticalAlign: "middle" }} />
+            {/* Continue with Email */}
           </a>
         </div>
       </div>
