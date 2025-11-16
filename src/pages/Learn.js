@@ -138,17 +138,17 @@ Please create an educational question that tests a key concept from this materia
         `Question ${idx + 1}: ${q.question}\nCorrect Answer: ${q.correctAnswer}) ${q.options[q.correctAnswer]}\nUser's Answer: ${q.userAnswer}) ${q.options[q.userAnswer]}`
       ).join('\n\n');
 
-      const prompt = `Analyze the following questions that the student answered incorrectly. Based on these mistakes, identify the key topics and concepts they need to focus on for improvement.
+      const prompt = `Analyze these incorrect answers and provide a brief study summary (3-4 sentences max):
 
-Wrong Questions:
 ${wrongQuestionsText}
 
-Please provide:
-1. **Topics to Focus On**: List the main topics/concepts that need more attention
-2. **Common Patterns**: Identify any patterns in the mistakes
-3. **Study Recommendations**: Specific suggestions for improvement
+Provide a concise response with:
+1. Main weak areas (1-2 topics)
+2. One key recommendation
+3. Talking in second person to the user
+4. List out the key points to focus on
 
-Format your response in a clear, organized manner using markdown.`;
+Keep it brief and actionable.`;
 
       console.log("Generating summary...");
       const result = await model.generateContent(prompt);
@@ -166,8 +166,8 @@ Format your response in a clear, organized manner using markdown.`;
   return (
     <div className="page-container">
       <div className="page-content">
-        <h1>Learn Mode</h1>
-        <p>Welcome to Learn Mode! Here you can study at your own pace and review material freely.</p>
+        <h1>Evaluation Mode</h1>
+        <p>Welcome to Evaluation Mode! Here you can study at your own pace and review material freely.</p>
         
         {uploadedFile && (
           <div style={{ marginTop: '1rem', padding: '0.5rem', background: '#f0f4ff', borderRadius: '8px' }}>
@@ -296,20 +296,25 @@ Format your response in a clear, organized manner using markdown.`;
 
             {/* AI Summary Section */}
             {summary && (
-              <div style={{ 
-                marginBottom: '2rem', 
-                padding: '1.5rem', 
-                background: 'linear-gradient(135deg, #f0f4ff 0%, #e8f5e9 100%)', 
-                borderRadius: '12px', 
-                boxShadow: '0 4px 16px rgba(68, 73, 183, 0.15)',
-                border: '2px solid #4449b7'
-              }}>
-                <h3 style={{ color: '#4449b7', marginTop: 0, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  🎯 Your Personalized Study Plan
-                </h3>
-                <div style={{ color: '#333' }}>
-                  <ReactMarkdown>{summary}</ReactMarkdown>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                <span style={{ fontSize: '7rem' }}>🐟</span>
+                <div style={{ 
+                  padding: '1.25rem', 
+                  background: '#f0f4ff', 
+                  borderRadius: '8px', 
+                  boxShadow: '0 2px 8px rgba(68, 73, 183, 0.1)',
+                  border: '2px solid #4449b7',
+                  maxWidth: '700px',
+                  flex: '0 1 auto'
+                }}>
+                  <h4 style={{ color: '#4449b7', marginTop: 0, marginBottom: '0.75rem', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    🎯 Study Summary
+                  </h4>
+                  <div style={{ color: '#333', fontSize: '1.05rem', lineHeight: '1.6' }}>
+                    <ReactMarkdown>{summary}</ReactMarkdown>
+                  </div>
                 </div>
+                <span style={{ fontSize: '7rem' }}>🐟</span>
               </div>
             )}
 
